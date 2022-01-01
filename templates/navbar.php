@@ -3,7 +3,7 @@
         <a class="navbar-brand">My Shop</a>
         <ul class="navbar-nav ml">
             <li class="nav-item">
-                Warenkorb (<?= $anzCartItems ?>)
+                <a href="index.php/cart">Warenkorb (<?= $anzCartItems ?>)</a>
             </li>
         </ul>
     </div>

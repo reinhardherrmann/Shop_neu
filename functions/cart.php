@@ -18,7 +18,22 @@ function countProductsInCart(int $userId){
         exit;
     }
 
-// da nur 1 Spalte gewählt reicht fetchColumn
+    // da nur 1 Spalte gewählt reicht fetchColumn
     $anzCartItems = $cartResults->fetchColumn();
     return $anzCartItems;
+}
+
+function getCartItemsForUser(int  $userID){
+    $sql = "SELECT prod_title,prod_description, prod_price, crt_amount
+            FROM tbl_cart
+            JOIN tbl_products ON (crt_product_id = tbl_products.prod_id)
+            WHERE crt_user_id = :userID";
+    $stmt = getDB()->prepare($sql);
+    $stmt->execute(array('userID' => $userID));
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($rows === false){
+        return [];
+    } else {
+        return $rows;
+    }
 }

@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reinhard Testshop</title>
+    <base href="<?=$baseURL?>>">
     <link rel="shortcut icon" type="image/x-icon" href="assets/favicons/favicon/favicon-32x32.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <!-- hier ggf bootstrapstyles überschreiben -->
@@ -16,18 +17,16 @@
 <?php include __DIR__.'/navbar.php'?>
 <header class="jumbotron">
     <div class="container">
-        <h1 class="mt-3 mb-3">Willkommen auf meinem Online Shop Tutorial</h1>
+        <?=var_dump($baseURL)?>
+        <h1 class="mt-3 mb-3">Warenkorb</h1>
     </div>
 </header>
-<section class="container" id="products">
+<section class="container" id="cartItems">
+    <?php foreach ($cartItems as $cartItem): ?>
     <div class="row">
-        <?php foreach ($products as $product):?>
-            <div class="col">
-                <?php include 'templates/card.php' ?>
-            </div>
-        <?php endforeach;?>
+        <?php include __DIR__ . '/cartItem.php'?>
     </div>
-
+    <?php endforeach; ?>
 </section>
 
 

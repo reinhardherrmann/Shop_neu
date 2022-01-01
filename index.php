@@ -12,8 +12,7 @@ require __DIR__.'/includes.php';
  * entweder ein neues PDO erstellt oder das bereits Existierende erneut verwendet **/
 getDB()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Produkte aus Datenbank auslesen
-$products = getAllProducts();
+
 // User-ID erstellen
 $userId = getCurrentUserId();
 
@@ -21,6 +20,3 @@ $userId = getCurrentUserId();
 setcookie('userId', $userId, strtotime('+2 days'));
 //var_dump($userId);
 
-$anzCartItems = countProductsInCart($userId);
-
-require __DIR__.'/templates/main.php';

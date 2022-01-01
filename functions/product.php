@@ -1,7 +1,7 @@
 <?php
 
 function getAllProducts(){
-    $list_sql = "SELECT id, prod_titel, prod_beschreibung, prod_preis FROM shop.tbl_products";
+    $list_sql = "SELECT prod_id, prod_title, prod_description, prod_price FROM shop.tbl_products";
     $param=[];
     $stmt = getDB()->prepare($list_sql);
     $stmt->execute();
